@@ -1,0 +1,103 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="layout.xhtml">
+
+     <ui:define name="title">Create a brand new car</ui:define>
+     <ui:define name="heading">Create a brand new car</ui:define>
+     <ui:define name="content">
+          <h:form>
+               <h:panelGrid columns="3">
+                    <h:outputLabel value="Reference Number:" for="referenceNumber" />
+                    <h:inputText value="#{carController.brandnewvehicle.referenceNumber}" id="referenceNumber"
+                         required="true" requiredMessage="Reference number is required" />
+                    <h:message errorStyle="color:red" for="referenceNumber" />
+
+                    <h:outputLabel value="Car Make:" for="make" />
+                    <h:inputText value="#{carController.brandnewvehicle.make}" id="make" required="true"
+                         requiredMessage="Make is required" />
+                    <h:message errorStyle="color:red" for="make" />
+
+                    <h:outputLabel value="Car Model:" for="model" />
+                    <h:inputText value="#{carController.brandnewvehicle.model}" id="model" required="true"
+                         requiredMessage="Model is required" />
+                    <h:message errorStyle="color:red" for="model" />
+
+                    <h:outputLabel value="Drive Type:" for="driveType" />
+                    <h:inputText value="#{carController.brandnewvehicle.driveType}" id="driveType" required="true"
+                         requiredMessage="Drive type is required" />
+                    <h:message errorStyle="color:red" for="driveType" />
+
+                    <h:outputLabel value="Body Colour:" for="bodycolour" />
+                    <h:inputText value="#{carController.brandnewvehicle.bodyColor}" id="bodycolour" required="true"
+                         requiredMessage="Body colour is required" />
+                    <h:message errorStyle="color:red" for="bodycolour" />
+
+                    <h:outputLabel value="Transmission:" for="transmissionType" />
+                    <h:inputText value="#{carController.brandnewvehicle.transmissionType}" id="transmissionType"
+                         required="true" requiredMessage="Transmission type is required" />
+                    <h:message errorStyle="color:red" for="transmissionType" />
+
+                    <h:outputLabel value="Car Engine:" for="engineType" />
+                    <h:inputText value="#{carController.brandnewvehicle.engineType}" id="engineType" required="true"
+                         requiredMessage="Car engine type is required" />
+                    <h:message errorStyle="color:red" for="engineType" />
+
+                    <h:outputLabel value="Fuel Type:" for="fuelType" />
+                    <h:inputText value="#{carController.brandnewvehicle.fuelType}" id="fuelType" required="true"
+                         requiredMessage="Fuel type is required" />
+                    <h:message errorStyle="color:red" for="fuelType" />
+
+                    <h:outputLabel value="Number of Doors:" for="numberOfDoors" />
+                    <h:inputText value="#{carController.brandnewvehicle.numberOfDoors}" id="numberOfDoors"
+                         required="true" requiredMessage="Number of doors is required" />
+                    <h:message errorStyle="color:red" for="numberOfDoors" />
+
+                    <h:outputLabel value="Number of Seats:" for="numberOfSeats" />
+                    <h:inputText value="#{carController.brandnewvehicle.numberOfSeats}" id="numberOfSeats"
+                         required="true" requiredMessage="Number of seats is required" />
+                    <h:message errorStyle="color:red" for="numberOfSeats" />
+
+                    <h:outputLabel value="Price:" for="price" />
+                    <h:inputText value="#{carController.brandnewvehicle.price}" id="price" required="true"
+                         requiredMessage="Price is required" />
+                    <h:message errorStyle="color:red" for="price" />
+
+                    <h:outputLabel value="Warranty:" for="warranty" />
+                    <h:inputText value="#{carController.brandnewvehicle.warranty}" id="warranty" required="true"
+                         requiredMessage="Warranty is required" />
+                    <h:message errorStyle="color:red" for="warranty" />
+
+                    <h:outputLabel value="Extending Warranty:" for="extendingWarranty" />
+                    <h:inputText value="#{carController.brandnewvehicle.extendingWarranty}" id="extendingWarranty"
+                         required="true" requiredMessage="Extending warranty is required" />
+                    <h:message errorStyle="color:red" for="extendingWarranty" />
+
+                    <h:outputLabel value="Road Side Assistance Package:" for="roadSideAssistancePackage" />
+                    <h:inputText value="#{carController.brandnewvehicle.roadSideAssistancePackage}"
+                         id="roadSideAssistancePackage" required="true"
+                         requiredMessage="Road side assistance package is required" />
+                    <h:message errorStyle="color:red" for="roadSideAssistancePackage" />
+
+                    <h:outputLabel value="Number of Cars:" for="carCount" />
+                    <h:inputText value="#{carController.brandnewvehicle.carCount}" id="carCount" required="true"
+                         requiredMessage="Number of cars is required" />
+                    <h:message errorStyle="color:red" for="carCount" />
+
+               </h:panelGrid>
+
+               <br />
+               <h:commandButton value="Create a Brand New Car" action="#{carController.CreateBrandNewVehicle}" />
+
+          </h:form>
+     </ui:define>
+     <ui:define name="footer">
+          <a href="listBrandnews.xhtml">The Stock of brand new cars</a> |
+          <a href="default.xhtml">Main Page</a>
+     </ui:define>
+
+</ui:composition>
+
+</html>
