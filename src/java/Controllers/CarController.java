@@ -1,6 +1,4 @@
-package Controllers;
-
-
+package controllers;
 
 import business.Logics.BrandNewVehicle;
 import business.Logics.BrandNewVehicleEJB;
@@ -9,17 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.ejb.EJB;
 import jakarta.faces.application.FacesMessage;
-//import java.io.Serializable;
-//import jakarta.faces.bean.ManagedBean;
 import jakarta.inject.Named;
-//import jakarta.faces.bean.RequestScoped;
-//import jakarta.faces.bean.SessionScoped;
-//import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.FacesContext;
 import java.io.Serializable;
-
-
 
 @Named
 @SessionScoped
@@ -43,9 +34,6 @@ public class CarController implements Serializable{
     
     public String CreateBrandNewVehicle() {
         brandnewvehicle = brandnewvehicleEJB.createBrandnew(brandnewvehicle);
-//        brandnewList = brandnewEJB.findBrandnews();
-//        flash("Successfully created the brand new car: " + brandnew.make+" "+brandnew.model);
-//		this.brandnew=new BrandNewVehicle();
         return "listBrandNewVehicles.xhtml";
     }  
 

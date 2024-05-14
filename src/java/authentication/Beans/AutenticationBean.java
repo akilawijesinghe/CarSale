@@ -2,8 +2,6 @@ package authentication.Beans;
 
 import models.Wuser;
 import java.io.Serializable;
-//import jakarta.faces.bean.ManagedBean;
-//import jakarta.faces.bean.SessionScoped;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
