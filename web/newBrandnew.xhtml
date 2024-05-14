@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="layout.xhtml">
+    
+<ui:define name="title">Create a brand new car</ui:define>
+<ui:define name="heading">Create a brand new car</ui:define>
+<ui:define name="content">
+    <h:form>   
+        <table>
+        <tbody>
+        
+        <tr>
+            <td><h:outputLabel value="Reference Number:" for="rfn"/></td>
+            <td><h:inputText value="#{mainController.brandnew.rfn}" id="rfn" required="true"
+                 requiredMessage="Please enter a reference number"/></td>
+        </tr>
+        
+        <tr>
+            <td><h:outputLabel value="Car Make:" for="make"/></td>
+            <td><h:inputText value="#{mainController.brandnew.make}" id="make" required="true"
+                 requiredMessage="Please enter the car make"/></td>
+        </tr>
+
+        <tr>
+            <td><h:outputLabel value="Car Model:" for="model"/></td>
+            <td><h:inputText value="#{mainController.brandnew.model}" id="model" required="true"
+                 requiredMessage="Please enter the car model"/></td>
+        </tr>
+
+	<tr>
+            <td><h:outputLabel value="Drive Type:" for="dtype"/></td>
+            <td><h:inputText value="#{mainController.brandnew.driveType}" id="dtype" required="true"
+                 requiredMessage="Please enter the drive type"/></td>
+        </tr>
+
+	<tr>
+            <td><h:outputLabel value="Body Colour:" for="bcolour"/></td>
+            <td><h:inputText value="#{mainController.brandnew.color}" id="bcolour" required="true"
+                 requiredMessage="Please enter the body colour"/></td>
+        </tr>
+	
+        <tr>
+            <td><h:outputLabel value="Transmission:" for="trans"/></td>
+            <td><h:inputText value="#{mainController.brandnew.transmission}" id="trans" required="true"
+                 requiredMessage="Please enter the transmission"/></td>
+        </tr>
+        
+	<tr>
+            <td><h:outputLabel value="Car Engine:" for="engine"/></td>
+            <td><h:inputText value="#{mainController.brandnew.engine}" id="engine" required="true"
+                 requiredMessage="Please enter the car engine"/></td>
+        </tr>
+
+	<tr>
+            <td><h:outputLabel value="Fuel Type:" for="ftype"/></td>
+            <td><h:inputText value="#{mainController.brandnew.fuelType}" id="ftype" required="true"
+                 requiredMessage="Please enter the fuel type"/></td>
+        </tr>
+        
+	<tr>
+            <td><h:outputLabel value="Number of Doors:" for="doors"/></td>
+            <td><h:inputText value="#{mainController.brandnew.doors}" id="doors" required="true"
+                 requiredMessage="Please enter the number of doors"/></td>
+        </tr>
+
+        <tr>
+            <td><h:outputLabel value="Number of Seats:" for="seats"/></td>
+            <td><h:inputText value="#{mainController.brandnew.seats}" id="seats" required="true"
+                 requiredMessage="Please enter the number of seats"/></td>
+        </tr>
+
+	<tr>
+            <td><h:outputLabel value="Price:" for="price"/></td>
+            <td><h:inputText value="#{mainController.brandnew.price}" id="price" required="true"
+                 requiredMessage="Please enter the price"/></td>
+        </tr>
+        
+	<tr>
+            <td><h:outputLabel value="Warranty:" for="warranty"/></td>
+            <td><h:inputText value="#{mainController.brandnew.warranty}" id="warranty" required="true"
+                 requiredMessage="Please enter the warranty"/></td>
+        </tr>
+
+	<tr>
+            <td><h:outputLabel value="Extending Warranty:" for="ewarranty"/></td>
+            <td><h:inputText value="#{mainController.brandnew.extendingWarranty}" id="ewarranty" required="true"
+                 requiredMessage="Please enter the extending warranty"/></td>
+        </tr>
+
+       	<tr>
+            <td><h:outputLabel value="Road Side Assistance Package:" for="rsap"/></td>
+            <td><h:inputText value="#{mainController.brandnew.rsap}" id="rsap" required="true"
+                 requiredMessage="Please enter the road side assistance package"/></td>
+        </tr>
+
+       	<tr>
+            <td><h:outputLabel value="Number of Cars:" for="noc"/></td>
+            <td><h:inputText value="#{mainController.brandnew.nOfCars}" id="noc" required="true"
+                 requiredMessage="Please enter the number of cars"/></td>
+        </tr>        
+        
+        </tbody>
+        
+        </table>
+        <br /><h:commandButton value="Create a Brand New Car" action="#{mainController.doCreateBrandnew}"/>
+
+    </h:form>
+</ui:define>
+<ui:define name="footer">
+    <a href="listBrandnews.xhtml">The Stock of brand new cars</a> |
+    <a href="default.xhtml">Main Page</a>
+</ui:define>
+
+</ui:composition>
+</html>
+
+
