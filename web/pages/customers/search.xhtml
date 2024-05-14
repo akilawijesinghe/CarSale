@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+  <ui:composition template="/layout.xhtml">
+    <ui:define name="title">Search for a customer</ui:define>
+    <ui:define name="heading">Search for a customer</ui:define>
+    <ui:define name="content">
+      <h:form>
+        <h:panelGrid columns="3">
+          <h:outputLabel value="Name:" />
+          <h:inputText
+            value="#"
+            required="true"
+            requiredMessage="Please enter name"
+            id="name"
+          />
+          <h:message errorStyle="color:red" for="name" />
+
+          <h:commandButton
+            value="Search for a customer"
+            action="#"
+          />
+        </h:panelGrid>
+      </h:form>
+    </ui:define>
+    <ui:define name="footer">
+    <a href="index.xhtml">List of Customer</a>&nbsp;|
+    <a href="../../default.xhtml">Main Page</a>
+</ui:define>
+  </ui:composition>
+</html>
