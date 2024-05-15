@@ -1,20 +1,60 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:h="http://java.sun.com/jsf/html"
-  xmlns:f="http://java.sun.com/jsf/core"
-  xmlns:ui="http://java.sun.com/jsf/facelets"
->
-  <ui:composition template="/layout.xhtml">
-    <ui:define name="title">Create a New Customer</ui:define>
-    <ui:define name="heading">Create a New Customer</ui:define>
-    <ui:define name="content">
-      <p>Create a New Customer form goes here</p>
-    </ui:define>
-    <ui:define name="footer">
-      <a href="index.xhtml">List of Customers</a>&nbsp;|
-      <a href="../../default.xhtml">Main Page</a>
-    </ui:define>
-  </ui:composition>
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    >
+    <ui:composition template="/layout.xhtml">
+        <ui:define name="title">Create a New Customer</ui:define>
+        <ui:define name="heading">Create a New Customer</ui:define>
+        <ui:define name="content">
+
+            <h:form id="createCustomerForm">
+                <h:panelGrid columns="3">
+                    <h:outputLabel value="Name:"/>
+                    <h:inputText value="#{customerController.customer.name}"
+                                 validator="isEmpty"
+                                 id="name">
+                        <f:attribute name="fieldName" value="Name" />
+                    </h:inputText>
+                    <h:message errorStyle="color:red" for="name" />
+
+                    <h:outputLabel value="Address:"/>
+                    <h:inputText value="#{customerController.customer.address}"
+                                 id="address"
+                                 validator="isEmpty"
+                                 >
+                        <f:attribute name="fieldName" value="Address" />
+                    </h:inputText>
+                    <h:message errorStyle="color:red" for="address" />
+
+                    <h:outputLabel value="Phone Number:"/>
+                    <h:inputText value="#{customerController.customer.phone}"
+                                 id="phone"
+                                 validator="isEmpty"
+                                 >
+                        <f:attribute name="fieldName" value="phone number" />
+                    </h:inputText>
+                    <h:message errorStyle="color:red" for="phone" />
+
+                    <h:outputLabel value="Email Address:"/>
+                    <h:inputText value="#{customerController.customer.email}"
+                                 id="email">
+                        <f:validator validatorId="isEmail" />
+                        <f:attribute name="fieldName" value="email " />
+                    </h:inputText>
+                    <h:message errorStyle="color:red" for="email" />
+
+                    <h:commandButton value="Create customer" action="#{customerController.doCreateCustomer()}" />
+                </h:panelGrid>
+            </h:form>
+
+        </ui:define>
+        <ui:define name="footer">
+            <a href="index.xhtml">List of Customers</a>&nbsp;|
+            <a href="../../default.xhtml">Main Page</a>
+        </ui:define>
+    </ui:composition>
 </html>
