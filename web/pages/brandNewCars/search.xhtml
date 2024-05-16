@@ -7,26 +7,26 @@
   xmlns:ui="http://java.sun.com/jsf/facelets"
 >
   <ui:composition template="/layout.xhtml">
-    <ui:define name="title">Search for a car order</ui:define>
-    <ui:define name="heading">Search for a car order</ui:define>
+    <ui:define name="title">Search for a brand new car</ui:define>
+    <ui:define name="heading">Search for a brand new car</ui:define>
     <ui:define name="content">
       <h:form>
         <h:panelGrid columns="3">
-          <h:outputLabel value="Order #:" />
+          <h:outputLabel value="Reference Number:" />
           <h:inputText
-            value="#"
+            value="#{carController.referenceNumber}"
             required="true"
-            requiredMessage="Please enter search for an order"
-            id="orderID"
+            requiredMessage="Please enter reference number"
+            id="referenceNumber"
           />
-          <h:message errorStyle="color:red" for="orderID" />
+          <h:message errorStyle="color:red" for="referenceNumber" />
 
-          <h:commandButton value="Search for a car order" action="#" />
+          <h:commandButton value="Search for a used car" action="#{carController.doSearchBrandNewVehicleByREF}" />
         </h:panelGrid>
       </h:form>
     </ui:define>
     <ui:define name="footer">
-      <a href="index.xhtml">List of car orders</a>&nbsp;|
+      <a href="index.xhtml">List of brand new cars</a>&nbsp;|
       <a href="../../default.xhtml">Main Page</a>
     </ui:define>
   </ui:composition>

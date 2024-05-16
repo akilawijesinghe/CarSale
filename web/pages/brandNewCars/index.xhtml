@@ -11,31 +11,31 @@
         <ui:define name="heading">The stock of brand new cars</ui:define>
         <ui:define name="content">
 
-            <h:dataTable id="data-table" value="#{carController.usedCarList}" var="uc">
+            <h:dataTable id="data-table" value="#{carController.brandNewCarList}" var="bc">
 
                 <h:column>
                     <f:facet name="header">Make</f:facet>  
-                        #{uc.make}
+                        #{bc.make}
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">Model</f:facet>  
-                        #{uc.model}
+                        #{bc.model}
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">Reference Number</f:facet>
                     <h:form>
-                        <h:commandLink action="#{carController.displayUsedByREF(uc.referenceNumber)}" value="#{uc.referenceNumber}" />
+                        <h:commandLink action="#{carController.displayBrandNewByREF(uc.referenceNumber)}" value="#{uc.referenceNumber}" />
                     </h:form>
                 </h:column>
             </h:dataTable>
             <br/>
-            <h:outputText value="Total customers : #{carController.usedCarList.size()}" />
+            <h:outputText value="Total customers : #{carController.brandNewCarList.size()}" />
 
         </ui:define>
         <ui:define name="footer">
-            <a href="add.xhtml">Create a used car</a>&nbsp;|
+            <a href="add.xhtml">Create a brand new car</a>&nbsp;|
             <a href="../../default.xhtml">Main Page</a>
         </ui:define>
     </ui:composition>

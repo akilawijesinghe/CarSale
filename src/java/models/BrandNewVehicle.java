@@ -1,12 +1,16 @@
-package business.Logics;
+package models;
 
 import jakarta.persistence.*;
 
+/**
+ * This class presents a brandnewvehicle database model
+ *
+ * @author : akila wijesinghe - 12194813
+ */
 @Entity
-@NamedQueries({
-	@NamedQuery(name = "BrandNewVehicle.findAll", query = "SELECT bn FROM BrandNewVehicle bn"),
-	@NamedQuery(name = "BrandNewVehicle.findREF", query = "SELECT bn FROM BrandNewVehicle bn where bn.referenceNumber= :preferenceNumber"),
-})
+@NamedQuery(name = "findAllBrandNew", query = "SELECT b FROM BrandNewVehicle b")
+@NamedQuery(name = "findBrandNewByRef", query = "SELECT b FROM BrandNewVehicle b where b.referenceNumber= :referenceNumber")
+
 public class BrandNewVehicle extends Car {
     private static final long serialVersionUID = 1L;
     
@@ -69,7 +73,7 @@ public class BrandNewVehicle extends Car {
 
     @Override
     public String toString() {
-        return "assignment2.Brandnew[ id=" + id + " ]";
+        return "BrandNewVehicle{" + "id=" + id + '}';
     }
     
 }

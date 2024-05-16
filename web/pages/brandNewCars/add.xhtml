@@ -1,14 +1,17 @@
-<!DOCTYPE html
-     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-     xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
-
-<ui:composition template="layout.xhtml">
-
-     <ui:define name="title">Create a brand new car</ui:define>
-     <ui:define name="heading">Create a brand new car</ui:define>
-     <ui:define name="content">
-          <h:form>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+  <ui:composition template="/layout.xhtml">
+    <ui:define name="title">Create a used Car</ui:define>
+    <ui:define name="heading">Create a used car</ui:define>
+    <ui:define name="content">
+      
+        <h:form>
                <h:panelGrid columns="3">
                     <h:outputLabel value="Reference Number:" for="referenceNumber" />
                     <h:inputText value="#{carController.brandnewvehicle.referenceNumber}" id="referenceNumber"
@@ -89,15 +92,14 @@
                </h:panelGrid>
 
                <br />
-               <h:commandButton value="Create a Brand New Car" action="#{carController.CreateBrandNewVehicle}" />
+               <h:commandButton value="Create a Brand New Car" action="#{carController.doCreateBrandNewVehicle}" />
 
           </h:form>
-     </ui:define>
-     <ui:define name="footer">
-          <a href="listBrandnews.xhtml">The Stock of brand new cars</a> |
-          <a href="default.xhtml">Main Page</a>
-     </ui:define>
-
-</ui:composition>
-
+        
+    </ui:define>
+    <ui:define name="footer">
+      <a href="index.xhtml">List of used cars</a>&nbsp;|
+      <a href="../../default.xhtml">Main Page</a>
+    </ui:define>
+  </ui:composition>
 </html>

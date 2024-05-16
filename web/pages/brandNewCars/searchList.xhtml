@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    >
+    <ui:composition template="/layout.xhtml">
+        <ui:define name="title">The stock of brand new cars</ui:define>
+        <ui:define name="heading">The stock of brand new cars</ui:define>
+        <ui:define name="content">
+
+            <h:dataTable id="data-table" value="#{carController.brandNewCarListByRef}" var="brandnewcar">
+
+                <h:column>
+                    <f:facet name="header">Reference Number</f:facet>  
+                        #{brandnewcar.referenceNumber}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Make</f:facet>  
+                        #{brandnewcar.make}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Model</f:facet>  
+                        #{brandnewcar.model}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Drive Type</f:facet>  
+                        #{brandnewcar.driveType}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Color</f:facet>  
+                        #{brandnewcar.bodyColor}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Transmission</f:facet>  
+                        #{brandnewcar.transmissionType}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Engine</f:facet>  
+                        #{brandnewcar.engineType}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Fuel type</f:facet>  
+                        #{brandnewcar.fuelType}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Doors</f:facet>  
+                        #{brandnewcar.numberOfDoors}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Seats</f:facet>  
+                        #{brandnewcar.numberOfSeats}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Number of Cars</f:facet>  
+                        #{brandnewcar.carCount}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Warranty</f:facet>  
+                        #{brandnewcar.warranty}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Extending Warranty</f:facet>  
+                        #{brandnewcar.extendingWarranty}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Road Side Assistance Package</f:facet>  
+                        #{brandnewcar.roadSideAssistancePackage}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Price</f:facet>
+                    <h:outputText value="#{brandnewcar.price}">
+                        <f:convertNumber type="currency" currencySymbol="$" maxFractionDigits="2" />
+                    </h:outputText>
+                </h:column>
+
+            </h:dataTable>
+            <br/>
+            <h:outputText value="Total customers : #{carController.brandNewCarListByRef.size()}" />
+
+        </ui:define>
+        <ui:define name="footer">
+            <a href="add.xhtml">Create a brand new car</a>&nbsp;|
+            <a href="../../default.xhtml">Main Page</a>
+        </ui:define>
+    </ui:composition>
+</html>
