@@ -1,6 +1,6 @@
 package Controllers;
 
-import Models.BrandNewVehicle;
+import models.BrandNewVehicle;
 import EJB.BrandNewVehicleEJB;
 import EJB.CarEJB;
 import EJB.UsedVehicleEJB;
@@ -12,7 +12,7 @@ import jakarta.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import Models.UsedVehicle;
+import models.UsedVehicle;
 
 /**
  * Controller for managing customers.
