@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import EJB.CustomerEJB;
-import Models.Customer;
+import models.Customer;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;

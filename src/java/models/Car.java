@@ -1,8 +1,13 @@
-package business.Logics;
+package models;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
 
+/**
+ * This class presents a car database model
+ *
+ * @author : akila wijesinghe - 12194813
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Car implements Serializable {
@@ -169,7 +174,7 @@ public class Car implements Serializable {
 
     @Override
     public String toString() {
-        return "assignment2.Car[ id=" + id + " ]";
+        return "Car{" + "id=" + id + '}';
     }
     
 }

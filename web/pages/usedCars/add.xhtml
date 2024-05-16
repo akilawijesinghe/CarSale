@@ -10,7 +10,105 @@
     <ui:define name="title">Create a used Car</ui:define>
     <ui:define name="heading">Create a used car</ui:define>
     <ui:define name="content">
-      <p>Add used car form goes here</p>
+      
+        <h:form>
+               <h:panelGrid columns="3">
+                    <h:outputLabel value="Reference Number:" for="referenceNumber" />
+                    <h:inputText value="#{carController.usedvehicle.referenceNumber}" id="referenceNumber"
+                         required="true" requiredMessage="Reference number is required" />
+                    <h:message errorStyle="color:red" for="referenceNumber" />
+
+                    <h:outputLabel value="Car Make:" for="make" />
+                    <h:inputText value="#{carController.usedvehicle.make}" id="make" required="true"
+                         requiredMessage="Make is required" />
+                    <h:message errorStyle="color:red" for="make" />
+
+                    <h:outputLabel value="Car Model:" for="model" />
+                    <h:inputText value="#{carController.usedvehicle.model}" id="model" required="true"
+                         requiredMessage="Model is required" />
+                    <h:message errorStyle="color:red" for="model" />
+
+                    <h:outputLabel value="Drive Type:" for="driveType" />
+                    <h:inputText value="#{carController.usedvehicle.driveType}" id="driveType" required="true"
+                         requiredMessage="Drive type is required" />
+                    <h:message errorStyle="color:red" for="driveType" />
+
+                    <h:outputLabel value="Body Colour:" for="bodycolour" />
+                    <h:inputText value="#{carController.usedvehicle.bodyColor}" id="bodycolour" required="true"
+                         requiredMessage="Body colour is required" />
+                    <h:message errorStyle="color:red" for="bodycolour" />
+
+                    <h:outputLabel value="Transmission:" for="transmissionType" />
+                    <h:inputText value="#{carController.usedvehicle.transmissionType}" id="transmissionType"
+                         required="true" requiredMessage="Transmission type is required" />
+                    <h:message errorStyle="color:red" for="transmissionType" />
+
+                    <h:outputLabel value="Car Engine:" for="engineType" />
+                    <h:inputText value="#{carController.usedvehicle.engineType}" id="engineType" required="true"
+                         requiredMessage="Car engine type is required" />
+                    <h:message errorStyle="color:red" for="engineType" />
+
+                    <h:outputLabel value="Fuel Type:" for="fuelType" />
+                    <h:inputText value="#{carController.usedvehicle.fuelType}" id="fuelType" required="true"
+                         requiredMessage="Fuel type is required" />
+                    <h:message errorStyle="color:red" for="fuelType" />
+
+                    <h:outputLabel value="Number of Doors:" for="numberOfDoors" />
+                    <h:inputText value="#{carController.usedvehicle.numberOfDoors}" id="numberOfDoors"
+                         required="true" requiredMessage="Number of doors is required" />
+                    <h:message errorStyle="color:red" for="numberOfDoors" />
+
+                    <h:outputLabel value="Number of Seats:" for="numberOfSeats" />
+                    <h:inputText value="#{carController.usedvehicle.numberOfSeats}" id="numberOfSeats"
+                         required="true" requiredMessage="Number of seats is required" />
+                    <h:message errorStyle="color:red" for="numberOfSeats" />
+
+                    <h:outputLabel value="Price:" for="price" />
+                    <h:inputText value="#{carController.usedvehicle.price}" id="price" required="true"
+                         requiredMessage="Price is required" />
+                    <h:message errorStyle="color:red" for="price" />
+
+                    <h:outputLabel value="Odometer:" for="odometer" />
+                    <h:inputText value="#{carController.usedvehicle.odometer}" id="odometer" required="true"
+                         requiredMessage="Odometer is required" />
+                    <h:message errorStyle="color:red" for="odometer" />
+
+                    <h:outputLabel value="Rego No:" for="regoNo" />
+                    <h:inputText value="#{carController.usedvehicle.regoNo}" id="regoNo"
+                         required="true" requiredMessage="Rego No is required" />
+                    <h:message errorStyle="color:red" for="regoNo" />
+
+                    <h:outputLabel value="Rego Expiry:" for="regoExpiry" />
+                    <h:inputText value="#{carController.usedvehicle.regoExpiary}"
+                         id="regoExpiry" required="true"
+                         requiredMessage="Rego expiry is required" />
+                    <h:message errorStyle="color:red" for="regoExpiry" />
+                    
+                     <h:outputLabel value="Service History:" for="serviceHistory" />
+                    <h:inputText value="#{carController.usedvehicle.serviceHistory}"
+                         id="serviceHistory" required="true"
+                         requiredMessage="Service history is required" />
+                    <h:message errorStyle="color:red" for="serviceHistory" />
+                    
+                     <h:outputLabel value="Vehicle Identification Number:" for="VIN" />
+                    <h:inputText value="#{carController.usedvehicle.VIN}"
+                         id="VIN" required="true"
+                         requiredMessage="VIN is required" />
+                    <h:message errorStyle="color:red" for="VIN" />
+                    
+                     <h:outputLabel value="Car History:" for="carHistory" />
+                    <h:inputText value="#{carController.usedvehicle.carHistory}"
+                         id="carHistory" required="true"
+                         requiredMessage="Car history is required" />
+                    <h:message errorStyle="color:red" for="carHistory" />
+
+               </h:panelGrid>
+
+               <br />
+               <h:commandButton value="Create a Used Car" action="#{carController.doCreateUsedVehicle}" />
+
+          </h:form>
+        
     </ui:define>
     <ui:define name="footer">
       <a href="index.xhtml">List of used cars</a>&nbsp;|
