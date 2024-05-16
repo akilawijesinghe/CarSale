@@ -6,7 +6,7 @@ package EJB;
 
 import java.util.List;
 
-import models.Customer;
+import Models.Customer;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
