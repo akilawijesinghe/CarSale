@@ -7,21 +7,21 @@
   xmlns:ui="http://java.sun.com/jsf/facelets"
 >
   <ui:composition template="/layout.xhtml">
-    <ui:define name="title">Search a used car</ui:define>
-    <ui:define name="heading">Search a used car</ui:define>
+    <ui:define name="title">Search for a brand new car</ui:define>
+    <ui:define name="heading">Search for a brand new car</ui:define>
     <ui:define name="content">
       <h:form>
         <h:panelGrid columns="3">
           <h:outputLabel value="Reference Number:" />
           <h:inputText
-            value="#"
+            value="#{carController.referenceNumber}"
             required="true"
             requiredMessage="Please enter reference number"
-            id="reference"
+            id="referenceNumber"
           />
-          <h:message errorStyle="color:red" for="email" />
+          <h:message errorStyle="color:red" for="referenceNumber" />
 
-          <h:commandButton value="Search for a used car" action="#" />
+          <h:commandButton value="Search for a used car" action="#{carController.doSearchUsedVehicleByREF}" />
         </h:panelGrid>
       </h:form>
     </ui:define>
