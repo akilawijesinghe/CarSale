@@ -1,6 +1,6 @@
 package EJB;
 
-import Models.BrandNewVehicle;
+import models.BrandNewVehicle;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 import java.util.List;

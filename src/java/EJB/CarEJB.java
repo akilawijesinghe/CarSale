@@ -1,6 +1,6 @@
 package EJB;
 
-import Models.Car;
+import models.Car;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
