@@ -65,4 +65,13 @@ public class CustomerController implements Serializable {
         }
         return null;
     }
+    
+    /**
+     * Get all the customers
+     */
+    public List<Customer> getCustomerList() {
+        
+	customerList = customerEJB.findCustomers();
+	return customerList;
+    }
 }
