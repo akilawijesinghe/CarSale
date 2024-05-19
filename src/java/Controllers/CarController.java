@@ -51,8 +51,10 @@ public class CarController implements Serializable {
 
         try {
             brandnewvehicle = brandnewvehicleEJB.createBrandnew(brandnewvehicle);
+            brandNewCarList = brandnewvehicleEJB.findBrandNew();
             ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Successfully created the brand new car : " + brandnewvehicle.getMake() + " " + brandnewvehicle.getModel(), null));
             this.brandnewvehicle = new BrandNewVehicle();
+            return "index.xhtml";
         } catch (Exception e) {
             ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Brand new car hasn't been created", e.getMessage()));
         }
@@ -117,6 +119,8 @@ public class CarController implements Serializable {
             usedvehicle = usedvehicleEJB.createUsed(usedvehicle);
             ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Successfully created the used car : " + usedvehicle.getMake() + " " + usedvehicle.getModel(), null));
             this.usedvehicle = new UsedVehicle();
+            usedCarList = usedvehicleEJB.findUsed();
+            return "index.xhtml";
         } catch (Exception e) {
             ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Used car hasn't been created", e.getMessage()));
         }
