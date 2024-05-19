@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/layout.xhtml">
+
+        <ui:define name="title">Customer: NAME </ui:define>
+        <ui:define name="heading">Customer: NAME </ui:define>
+        <ui:define name="content">
+
+            <h3>Details</h3>
+            <p>ID:#{customerController.customer.id}</p>
+            <p>Name:#{customerController.customer.name}</p>
+            <p>Phone Number:#{customerController.customer.phone}</p>
+            <p>Address:#{customerController.customer.address}</p>
+            <p>Email Address:#{customerController.customer.email}</p>
+
+            <br/>
+            <h3>Car Orders (ORDER_COUNT)</h3>
+
+            <h:dataTable id="data-table" value="#">
+                <h:column>
+                    <f:facet name="header">#</f:facet>  
+                    ORDER_ID
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Time Created</f:facet>  
+                    DATE + TIME + TIMEZONE
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Car</f:facet>  
+                    CAR_NAME
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Unit Price</f:facet>  
+                    $123,000
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Qty</f:facet>  
+                    ORDER_QUANTITY
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Total Price</f:facet>  
+                    $123,000 (SAME_PRICE as Unit Price)
+                </h:column>
+            </h:dataTable>
+
+        </ui:define>
+        <ui:define name="footer">
+            <a href="index.xhtml">Customer List</a>&nbsp;|
+            <a href="../orders/index.xhtml">Order List</a>&nbsp;|
+            <a href="../../default.xhtml">Main Page</a>
+        </ui:define>
+
+    </ui:composition>
+</html>

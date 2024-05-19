@@ -20,7 +20,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@NamedQuery(name = "findAllCustomers", query = "SELECT c FROM Customer c")
+@NamedQueries({
+    @NamedQuery(name = "findAllCustomers", query = "SELECT c FROM Customer c"),
+    @NamedQuery(name = "findWithParam", query = "select c from Customer c where c.name = :name"),
+    @NamedQuery(name = "findById", query = "select c from Customer c where c.id = :id")
+})
 public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
