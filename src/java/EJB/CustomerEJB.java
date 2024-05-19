@@ -11,10 +11,12 @@ import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 /**
  * EJB for managing customers.
+ *
  * @author : kasun eranda - 12216898
  */
 @Stateless
@@ -26,6 +28,7 @@ public class CustomerEJB {
 
     /**
      * Finds all customers.
+     *
      * @return A list of customers.
      */
     public List<Customer> findCustomers() {
@@ -35,11 +38,37 @@ public class CustomerEJB {
 
     /**
      * Creates a new customer.
+     *
      * @param customer The customer to create.
      * @return The created customer.
      */
     public Customer createCustomer(Customer customer) {
         em.persist(customer);
         return customer;
+    }
+
+    /**
+     * Search customers
+     *
+     * @param name name
+     * @return
+     */
+    public List<Customer> searchCustomer(String name) {
+        Query q = em.createNamedQuery("findWithParam");
+        q.setParameter("name", name);
+
+        return q.getResultList();
+    }
+    
+     /**
+     * Get a customer by id
+     *
+     * @param id customer id
+     * @return
+     */
+    public Customer findACustomer(int id) {
+        TypedQuery<Customer> query = em.createNamedQuery("findById", Customer.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
     }
 }

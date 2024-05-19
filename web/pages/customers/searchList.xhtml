@@ -1,48 +1,42 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    >
     <ui:composition template="/layout.xhtml">
-
-        <ui:define name="title">List of Customers</ui:define>
-        <ui:define name="heading">List of Customers</ui:define>
+        <ui:define name="title">The found customer</ui:define>
+        <ui:define name="heading">The found customer</ui:define>
         <ui:define name="content">
 
-            <h:dataTable id="data-table" value="#{customerController.customerList}" var="c">
-
+            <h:dataTable id="data-table" value="#{customerController.customerSearchList}" var="c">
                 <h:column>
                     <f:facet name="header">Name</f:facet>  
                         #{c.name}
                 </h:column>
-
                 <h:column>
                     <f:facet name="header">Address</f:facet>  
                         #{c.address}
                 </h:column>
-
                 <h:column>
-                    <f:facet name="header">Order</f:facet>  
+                    <f:facet name="header">Orders</f:facet>  
                     0
                 </h:column>
-
                 <h:column>
                     <f:facet name="header">Actions</f:facet>  
-                    <h:form>
-                        <h:commandLink action="#{customerController.doViewDetails(c.id)}" value="view details" />
-                    </h:form>
+                    <a href="#">View details</a>
                 </h:column>
-
             </h:dataTable>
+            
+            <br/>
+            <h:outputText value="Total customers : #{customerController.customerSearchList.size()}" />
 
-            <h:outputText value="Total customers : #{customerController.customerList.size()}" />
         </ui:define>
         <ui:define name="footer">
-            <a href="add.xhtml">Add a new Customer</a>&nbsp;|
+            <a href="index.xhtml">List of Customer</a>&nbsp;|
             <a href="../../default.xhtml">Main Page</a>
         </ui:define>
-
     </ui:composition>
 </html>

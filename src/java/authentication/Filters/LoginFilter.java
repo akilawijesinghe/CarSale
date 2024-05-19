@@ -13,60 +13,59 @@ import authentication.Beans.AutenticationBean;
 import jakarta.inject.Inject;
 
 public class LoginFilter implements Filter {
-    
+
     //Use the following for GlassFish 7.0.9  
     @Inject
     AutenticationBean session;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {  }
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-       HttpServletRequest req = (HttpServletRequest) request;
-       HttpServletResponse resp = (HttpServletResponse) response;
-       //Use the following for GlassFish 6.2.5  
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse resp = (HttpServletResponse) response;
+        //Use the following for GlassFish 6.2.5  
         //Retrieve the authtication bean
-       //AutenticationBean session = (AutenticationBean) req.getSession(true).getAttribute("authBean");
-       //Any after login accessible pages should be listed here
-       String[] afterLog = {"logout.xhtml", "default.xhtml", "search.xhtml", "add.xhtml", "searchList.xhtml" }; 
-       String url=req.getRequestURI();
-       System.out.println("URL: "+url);
-       if (session==null || !session.isLogged()) {
-           boolean risk=false;
-           for (int i=0; i<afterLog.length; i++) {
-                if (url.indexOf(afterLog[i])>=0) 
-                {risk=true;
-                break;
+        //AutenticationBean session = (AutenticationBean) req.getSession(true).getAttribute("authBean");
+        //Any after login accessible pages should be listed here
+        String[] afterLog = {"logout.xhtml", "detail.xhtml", "default.xhtml", "search.xhtml", "add.xhtml", "searchList.xhtml"};
+        String url = req.getRequestURI();
+        System.out.println("URL: " + url);
+        if (session == null || !session.isLogged()) {
+            boolean risk = false;
+            for (int i = 0; i < afterLog.length; i++) {
+                if (url.indexOf(afterLog[i]) >= 0) {
+                    risk = true;
+                    break;
                 }
-           }
-           if (risk) {
-               resp.sendRedirect(req.getServletContext().getContextPath()+"/login.xhtml");
-           } 
-           else {
-               chain.doFilter(request, response);
-           }
-       } else {
-           if (url.indexOf("register.xhtml")>=0 || url.indexOf("login.xhtml")>=0
-                   || url.indexOf("emailVerification.xhtml")>=0 || url.indexOf("emailRecovery.xhtml")>=0
-                   || url.indexOf("userRecovery.xhtml")>=0 ) {
-               resp.sendRedirect(req.getServletContext().getContextPath()+"/default.xhtml");
-           }
-           else if (url.indexOf("logout.xhtml")>=0) {
-               //Use the following for GlassFish 6.2.5  
+            }
+            if (risk) {
+                resp.sendRedirect(req.getServletContext().getContextPath() + "/login.xhtml");
+            } else {
+                chain.doFilter(request, response);
+            }
+        } else {
+            if (url.indexOf("register.xhtml") >= 0 || url.indexOf("login.xhtml") >= 0
+                    || url.indexOf("emailVerification.xhtml") >= 0 || url.indexOf("emailRecovery.xhtml") >= 0
+                    || url.indexOf("userRecovery.xhtml") >= 0) {
+                resp.sendRedirect(req.getServletContext().getContextPath() + "/default.xhtml");
+            } else if (url.indexOf("logout.xhtml") >= 0) {
+                //Use the following for GlassFish 6.2.5  
                 //req.getSession().removeAttribute("authBean");
                 //Use the following for GlassFish 7.0.9  
-               req.getSession(false).invalidate();
-               resp.sendRedirect(req.getServletContext().getContextPath()+"/login.xhtml");
-           }
-           else {
-               chain.doFilter(request, response);
-           }
-       }
+                req.getSession(false).invalidate();
+                resp.sendRedirect(req.getServletContext().getContextPath() + "/login.xhtml");
+            } else {
+                chain.doFilter(request, response);
+            }
+        }
     }
+
     @Override
-    public void destroy() {  
-        session=null;
+    public void destroy() {
+        session = null;
     }
-    
+
 }
