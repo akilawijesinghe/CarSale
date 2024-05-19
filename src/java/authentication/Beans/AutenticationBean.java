@@ -1,6 +1,6 @@
 package authentication.Beans;
 
-import models.Wuser;
+import Models.Wuser;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.logging.Level;

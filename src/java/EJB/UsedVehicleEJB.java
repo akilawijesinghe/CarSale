@@ -3,7 +3,7 @@ package EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 import java.util.List;
-import models.UsedVehicle;
+import Models.UsedVehicle;
 
 /**
  * EJB for managing usedvehicle.
