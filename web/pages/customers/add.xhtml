@@ -33,7 +33,7 @@
                     <h:outputLabel value="Phone Number:"/>
                     <h:inputText value="#{customerController.customer.phone}"
                                  id="phone"
-                                 validator="isEmpty"
+                                 validator="isPhoneNumber"
                                  >
                         <f:attribute name="fieldName" value="phone number" />
                     </h:inputText>
