@@ -7,6 +7,7 @@ package Models;
 import java.io.Serializable;
 
 import jakarta.persistence.*;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,5 +41,9 @@ public class Customer implements Serializable {
     private String phone;
     @Column(name = "email")
     private String email;
+    
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+     private List<Order> orders;
+    
 
 }

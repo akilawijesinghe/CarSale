@@ -5,14 +5,13 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <ui:composition template="/layout.xhtml">
-        <ui:define name="title">Order List</ui:define>
-        <ui:define name="heading">Order List</ui:define>
+        <ui:define name="title">Order Search Results</ui:define>
+        <ui:define name="heading">Order Search Results</ui:define>
         <ui:define name="content">
-
             <h:form>
-                <h:dataTable id="order-table" value="#{orderController.orderList}" var="o">
+                <h:dataTable value="#{orderController.orderSearchList}" var="o" border="1">
                     <h:column>
-                        <f:facet name="header">Order Number</f:facet>
+                        <f:facet name="header">Order ID</f:facet>
                         #{o.id}
                     </h:column>
                     <h:column>
@@ -20,25 +19,15 @@
                         #{o.customer.name}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">Car</f:facet>
+                        <f:facet name="header">Car Model</f:facet>
                         #{o.car.model}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Quantity</f:facet>
                         #{o.quantity}
                     </h:column>
-                    <h:column>
-                        <f:facet name="header">Actions</f:facet>
-                        <h:commandLink value="Delete" action="#{orderController.deleteOrder(o.id)}">
-                            <f:ajax render="@form"/>
-                        </h:commandLink>
-                    </h:column>
                 </h:dataTable>
-            
-                <br/>
-                <h:outputText value="Total orders: #{orderController.orderList.size()}" />
             </h:form>
-
         </ui:define>
         <ui:define name="footer">
             <a href="index.xhtml">List of Orders</a>&nbsp;|

@@ -1,20 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:h="http://java.sun.com/jsf/html"
-  xmlns:f="http://java.sun.com/jsf/core"
-  xmlns:ui="http://java.sun.com/jsf/facelets"
->
-  <ui:composition template="/layout.xhtml">
-    <ui:define name="title">Create a New car order</ui:define>
-    <ui:define name="heading">Create a New car order</ui:define>
-    <ui:define name="content">
-      <p>Create a New car order form goes here</p>
-    </ui:define>
-    <ui:define name="footer">
-      <a href="index.xhtml">List of Car Orders</a>&nbsp;|
-      <a href="../../default.xhtml">Main Page</a>
-    </ui:define>
-  </ui:composition>
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    >
+    <ui:composition template="/layout.xhtml">
+        <ui:define name="title">Create a New Order</ui:define>
+        <ui:define name="heading">Create a New Order</ui:define>
+        <ui:define name="content">
+
+            <h:form id="createOrderForm">
+                <h:panelGrid columns="3">
+                    <h:outputLabel value="Customer:" for="customer" />
+                    <h:selectOneMenu value="#{orderController.selectedCustomerId}" id="customer">
+                        <f:selectItems value="#{orderController.customerList}" var="customer" itemValue="#{customer.id}" itemLabel="#{customer.name}" />
+                    </h:selectOneMenu>
+                    <h:message errorStyle="color:red" for="customer" />
+
+                    <h:outputLabel value="Car:" for="car" />
+                    <h:selectOneMenu value="#{orderController.selectedCarId}" id="car">
+                        <f:selectItems value="#{orderController.carList}" var="car" itemValue="#{car.id}" itemLabel="#{car.make} #{car.model}" />
+                    </h:selectOneMenu>
+                    <h:message errorStyle="color:red" for="car" />
+
+                    <h:outputLabel value="Quantity:" for="quantity" />
+                    <h:inputText value="#{orderController.order.quantity}" id="quantity" validatorMessage="Quantity must be a positive integer.">
+                        <f:validateLongRange minimum="1" />
+                    </h:inputText>
+                    <h:message errorStyle="color:red" for="quantity" />
+
+                    <h:commandButton value="Create Order" action="#{orderController.doCreateOrder()}" />
+                </h:panelGrid>
+            </h:form>
+
+        </ui:define>
+        <ui:define name="footer">
+            <a href="orderList.xhtml">List of Orders</a>&nbsp;|
+            <a href="../../default.xhtml">Main Page</a>
+        </ui:define>
+    </ui:composition>
 </html>
