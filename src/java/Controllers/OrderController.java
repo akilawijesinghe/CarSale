@@ -104,7 +104,7 @@ public String doCreateOrder() {
     
     public String getOrderByOrderId() {
         orderSearchList = orderEJB.searchOrderByOrderId(searchOrderId);
-        return "SearchResult.xhtml";
+        return "searchList.xhtml";
     }
 
     public List<Order> getOrderSearchList() {

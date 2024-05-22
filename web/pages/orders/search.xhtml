@@ -11,8 +11,14 @@
             <h:form>
                 <h:panelGrid columns="3">
                     <h:outputLabel value="Order ID:" />
-                    <h:inputText value="#{orderController.searchOrderId}" id="searchOrderId" />
-                    <h:message errorStyle="color:red" for="searchOrderId" />
+                    <h:inputText
+                        value="#{orderController.searchOrderId}"
+                        validator="isNumber"
+                        id="searchKey"
+                        >
+                        <f:attribute name="fieldName" value="search" />
+                    </h:inputText>
+                    <h:message errorStyle="color:red" for="searchKey" />
 
                     <h:commandButton value="Search for an Order" action="#{orderController.getOrderByOrderId()}" />
                 </h:panelGrid>
