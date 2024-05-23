@@ -32,6 +32,14 @@ public enum ErrorMessage {
      */
     INVALID_EMAIL("Please enter valid {0}"),
     
+    
+    /**
+     * Error message for an invalid number format.
+     * It replaces {0} with the field name.
+     */
+    INVALID_NUMBER("Please enter valid {0}"),
+    
+    
     /**
      * Error message for an invalid phone number format.
      * It replaces {0} with the field name.

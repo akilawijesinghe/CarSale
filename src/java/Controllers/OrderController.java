@@ -125,7 +125,8 @@ public class OrderController implements Serializable {
         orderList = orderEJB.findOrders();
         return orderList;
     }
-    
+  
+
     public List<Order> getOrderSearchList() {
         return orderSearchList;
     }
