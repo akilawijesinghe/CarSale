@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 /**
  * Validator for checking number format.
+ *
  * @author : kasun eranda - 12216898
  */
 @FacesValidator(value = "isNumber")
@@ -25,6 +26,7 @@ public class IsNumber extends BaseValidator implements Validator {
 
     /**
      * Validates the number format.
+     *
      * @param context The FacesContext for the current request.
      * @param component The UIComponent being validated.
      * @param value The value to validate.
@@ -35,12 +37,16 @@ public class IsNumber extends BaseValidator implements Validator {
         setError(ErrorMessage.INVALID_NUMBER);
         setFieldName((String) component.getAttributes().get(FIELD_NAME_ATTR));
 
-        String componentValue = value.toString();
+        if (value != null) {
+            String componentValue = value.toString();
 
-        pattern = Pattern.compile(DIGIT_REGEX_PATTERN);
-        matcher = pattern.matcher(componentValue);
+            pattern = Pattern.compile(DIGIT_REGEX_PATTERN);
+            matcher = pattern.matcher(componentValue);
 
-        if (!matcher.matches()) {
+            if (!matcher.matches()) {
+                throw generateError();
+            }
+        } else {
             throw generateError();
         }
 

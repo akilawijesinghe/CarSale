@@ -26,11 +26,15 @@
                     <h:message errorStyle="color:red" for="car" />
 
                     <h:outputLabel value="Quantity:" for="quantity" />
-                    <h:inputText value="#{orderController.order.quantity}" id="quantity" validatorMessage="Quantity must be a positive integer.">
-                        <f:validateLongRange minimum="1" />
+
+                    <h:inputText value="#{orderController.order.quantity}" 
+                                 id="quantity" 
+                                 validator="isNumber">
+                        <f:attribute name="fieldName" value="quantity" />
                     </h:inputText>
                     <h:message errorStyle="color:red" for="quantity" />
 
+                    
                     <h:commandButton value="Create Order" action="#{orderController.doCreateOrder()}" />
                 </h:panelGrid>
             </h:form>
