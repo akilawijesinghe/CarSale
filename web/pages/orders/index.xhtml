@@ -8,40 +8,40 @@
         <ui:define name="title">Order List</ui:define>
         <ui:define name="heading">Order List</ui:define>
         <ui:define name="content">
-
-            <h:form>
-                <h:dataTable id="order-table" value="#{orderController.orderList}" var="o">
-                    <h:column>
-                        <f:facet name="header">Order Number</f:facet>
+            
+            <h:dataTable id="data-table" value="#{orderController.orderList}" var="o">
+                <h:column>
+                    <f:facet name="header">Order Number</f:facet>
                         #{o.id}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Customer Name</f:facet>
-                        #{o.customer.name}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Car</f:facet>
-                        #{o.car.model}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Quantity</f:facet>
-                        #{o.quantity}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Actions</f:facet>
-                        <h:commandLink value="Delete" action="#{orderController.deleteOrder(o.id)}">
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Customer Name</f:facet>
+                    <h:form>
+                        <h:commandLink action="#{orderController.displayCustomer(o.customer.id)}" value="#{o.customer.name}"/>
+                    </h:form>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Car</f:facet>
+                    <h:form>
+                        <h:commandLink action="#{orderController.displayCar(o.car)}" value="#{o.car.model}"/>
+                    </h:form>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Actions</f:facet>
+                    <h:form>
+                        <h:commandLink value="Delete" action="#{orderController.doDeleteOrder(o.id)}">
                             <f:ajax render="@form"/>
                         </h:commandLink>
-                    </h:column>
-                </h:dataTable>
-            
-                <br/>
-                <h:outputText value="Total orders: #{orderController.orderList.size()}" />
-            </h:form>
+                    </h:form>
+                </h:column>
+            </h:dataTable>
+
+            <br/>
+            <h:outputText value="Total orders: #{orderController.orderList.size()}" />
 
         </ui:define>
         <ui:define name="footer">
-            <a href="index.xhtml">List of Orders</a>&nbsp;|
+            <a href="add.xhtml">Create a new car order</a>&nbsp;|
             <a href="../../default.xhtml">Main Page</a>
         </ui:define>
     </ui:composition>

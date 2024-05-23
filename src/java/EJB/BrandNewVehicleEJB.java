@@ -33,4 +33,12 @@ public class BrandNewVehicleEJB {
         query.setParameter("referenceNumber", referenceNumber);
         return query.getResultList();
     }
+    
+     public void reduceAmount(BrandNewVehicle bn, int rn) {
+	int i;
+	i=bn.getCarCount().intValue();
+	i=i-rn;
+	bn.setCarCount(Integer.valueOf(i));
+	em.merge(bn);
+    }
 }

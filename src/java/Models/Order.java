@@ -1,58 +1,51 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Models;
 
-/**
- *
- * @author nilakshadilshan
- */
-import Models.Car;
-import Models.Customer;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
+import java.io.Serializable;
+import java.util.Date;
+import jakarta.persistence.*;
 
-@Entity(name = "CustomerOrder")
+@Entity
+@Table(name = "CUSTOMER_ORDER")
 @NamedQueries({
-    @NamedQuery(name = "CustomerOrder.findByCustomerId", query = "SELECT o FROM CustomerOrder o WHERE o.customer.id = :customerId"),
-        @NamedQuery(name = "findOrderById", query = "SELECT o FROM CustomerOrder o WHERE o.id = :orderId")
+    @NamedQuery(name = "Order.findAllOrder", query = "SELECT o FROM Order o"),
+    @NamedQuery(name = "Order.findByID", query = "SELECT o FROM Order o where o.id= :id")
 })
-public class Order {
+
+public class Order implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    protected Long id;
 
-    @ManyToOne
+    @Column(nullable = false)
+    protected Float unitPrice;
+
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    protected Date timeCreated = new Date();
+
+    @Column(nullable = false)
+    protected Integer quantity = 1;
+
+    @ManyToOne(cascade = {
+        CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "CUSTOMERID", referencedColumnName = "ID")
     private Customer customer;
 
     @ManyToOne
+    @JoinColumn(name = "CARID", referencedColumnName = "ID")
     private Car car;
 
-    private int quantity;
-
-    // Getters and setters
-
     public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Customer getCustomer() {
-        return customer;
+        return this.id;
     }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Customer getCustomer() {
+        return this.customer;
     }
 
     public Car getCar() {
@@ -63,12 +56,36 @@ public class Order {
         this.car = car;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public Integer getQuantity() {
+        return this.quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-    
+
+    public Float getUnitPrice() {
+        return this.unitPrice;
+    }
+
+    public void setUnitPrice(Float unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public Float getTotalPrice() {
+        return this.unitPrice * this.quantity;
+    }
+
+    public Date getTimeCreated() {
+        return this.timeCreated;
+    }
+
+    public void setTimeCreated(Date timeCreated) {
+        this.timeCreated = timeCreated;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" + "id=" + id + ", unitPrice=" + unitPrice + ", quantity=" + quantity + ", timeCreated=" + timeCreated + ", customer=" + customer + ", car=" + car + '}';
+    }
 }

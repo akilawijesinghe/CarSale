@@ -28,21 +28,20 @@ import lombok.NoArgsConstructor;
 })
 public class Customer implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     @Column(name = "id")
-    private Long id;
+    protected Long id;
     @Column(name = "name")
-    private String name;
+    protected String name;
     @Column(name = "address")
-    private String address;
+    protected String address;
     @Column(name = "phone")
-    private String phone;
+    protected String phone;
     @Column(name = "email")
-    private String email;
+    protected String email;
     
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany
      private List<Order> orders;
     
 

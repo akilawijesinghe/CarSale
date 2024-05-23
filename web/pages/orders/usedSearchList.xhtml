@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    >
+    <ui:composition template="/layout.xhtml">
+        <ui:define name="title">Find a used car</ui:define>
+        <ui:define name="heading">The found used cars</ui:define>
+        <ui:define name="content">
+
+            <h:dataTable id="data-table" value="#{orderController.usedCarListByRef}" var="uc">
+
+                <h:column>
+                    <f:facet name="header">Reference Number</f:facet>  
+                        #{uc.referenceNumber}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Make</f:facet>  
+                        #{uc.make}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Model</f:facet>  
+                        #{uc.model}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Drive Type</f:facet>  
+                        #{uc.driveType}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Color</f:facet>  
+                        #{uc.bodyColor}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Transmission</f:facet>  
+                        #{uc.transmissionType}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Engine</f:facet>  
+                        #{uc.engineType}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Fuel type</f:facet>  
+                        #{uc.fuelType}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Doors</f:facet>  
+                        #{uc.numberOfDoors}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Seats</f:facet>  
+                        #{uc.numberOfSeats}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Number of Cars</f:facet>  
+                        #{uc.carCount}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Odometer</f:facet>  
+                        #{uc.odometer}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Rego No</f:facet>  
+                        #{uc.regoNo}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Rego Expiry</f:facet>  
+                        #{uc.regoExpiary}
+                </h:column>
+                
+                 <h:column>
+                    <f:facet name="header">Service History</f:facet>  
+                        #{uc.serviceHistory}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Vehicle Identification Number</f:facet>  
+                        #{uc.VIN}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Car History</f:facet>  
+                        #{uc.carHistory}
+                </h:column>
+                
+
+                <h:column>
+                    <f:facet name="header">Price</f:facet>
+                    <h:outputText value="#{uc.price}">
+                        <f:convertNumber type="currency" currencySymbol="$" maxFractionDigits="2" />
+                    </h:outputText>
+                </h:column>
+
+            </h:dataTable>
+            <br/>
+            <h:outputText value="Total customers : #{orderController.usedCarListByRef.size()}" />
+
+        </ui:define>
+        <ui:define name="footer">
+            <a href="../usedCars/add.xhtml">Create a used car</a>&nbsp;|
+            <a href="../../default.xhtml">Main Page</a>
+        </ui:define>
+    </ui:composition>
+</html>

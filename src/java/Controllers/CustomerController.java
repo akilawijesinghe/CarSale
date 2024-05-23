@@ -10,6 +10,7 @@ import java.util.List;
 
 import EJB.CustomerEJB;
 import Models.Customer;
+import static com.sun.xml.ws.spi.db.BindingContextFactory.LOGGER;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;
@@ -38,6 +39,8 @@ public class CustomerController implements Serializable {
     private List<Customer> customerSearchList = new ArrayList<Customer>();
 
     private String searchKey = new String();
+
+    private int customerId;
 
     /**
      * Gets the current customer.
@@ -93,7 +96,6 @@ public class CustomerController implements Serializable {
      * @return Customer
      */
     public String getCustomerByName() {
-
         customerSearchList = customerEJB.searchCustomer(searchKey);
         return "searchList.xhtml";
     }
@@ -106,16 +108,22 @@ public class CustomerController implements Serializable {
     public List<Customer> getCustomerSearchList() {
         return customerSearchList;
     }
-    
+
     /**
      * Display a customer details
-     * 
+     *
      * @param id customer id
      * @return String View
      */
-    public String doViewDetails(int id){
+    public String doViewDetails(int id) {
         this.customer = customerEJB.findACustomer(id);
         return "detail.xhtml";
+    }
+
+    public void loadCustomerDetails() {
+        if (customerId != 0) {
+            customer = customerEJB.findACustomer(customerId);
+        }
     }
 
 }

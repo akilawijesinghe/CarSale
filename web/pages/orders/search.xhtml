@@ -11,15 +11,16 @@
             <h:form>
                 <h:panelGrid columns="3">
                     <h:outputLabel value="Order ID:" />
-                    <h:inputText value="#{orderController.searchOrderId}" id="searchOrderId" />
+                    <h:inputText value="#{orderController.searchOrderId}" id="searchOrderId" required="true"
+            requiredMessage="Please enter order number"/>
                     <h:message errorStyle="color:red" for="searchOrderId" />
 
-                    <h:commandButton value="Search for an Order" action="#{orderController.getOrderByOrderId()}" />
+                    <h:commandButton value="Search for an Order" action="#{orderController.doSearchCarOrder}" />
                 </h:panelGrid>
             </h:form>
         </ui:define>
         <ui:define name="footer">
-            <a href="index.xhtml">List of Orders</a>&nbsp;|
+            <a href="index.xhtml">List of Car Orders</a>&nbsp;|
             <a href="../../default.xhtml">Main Page</a>
         </ui:define>
     </ui:composition>

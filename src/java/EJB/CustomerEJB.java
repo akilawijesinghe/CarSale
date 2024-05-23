@@ -59,8 +59,8 @@ public class CustomerEJB {
 
         return q.getResultList();
     }
-    
-     /**
+
+    /**
      * Get a customer by id
      *
      * @param id customer id
@@ -70,5 +70,13 @@ public class CustomerEJB {
         TypedQuery<Customer> query = em.createNamedQuery("findById", Customer.class);
         query.setParameter("id", id);
         return query.getSingleResult();
+    }
+
+    public Customer find(Long id) {
+        return this.em.find(Customer.class, id);
+    }
+
+    public void mergeCustomer(Customer customer) {
+        em.merge(customer);
     }
 }

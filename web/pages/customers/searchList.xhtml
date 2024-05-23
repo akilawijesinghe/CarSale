@@ -22,14 +22,16 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Orders</f:facet>  
-                    0
+                        #{c.orders.size()}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">Actions</f:facet>  
-                    <a href="#">View details</a>
+                    <f:facet name="header">Actions</f:facet> 
+                    <h:form>
+                        <h:commandLink action="#{customerController.doViewDetails(c.id)}" value="view details" />
+                    </h:form>
                 </h:column>
             </h:dataTable>
-            
+
             <br/>
             <h:outputText value="Total customers : #{customerController.customerSearchList.size()}" />
 

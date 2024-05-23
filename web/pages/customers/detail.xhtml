@@ -26,17 +26,19 @@
                     <f:facet name="header">#</f:facet>
                     #{order.id}
                 </h:column>
-<!--                <h:column>
+                <h:column>
                     <f:facet name="header">Time Created</f:facet>
-                    #{order.creationTime}
-                </h:column>-->
+                    #{order.timeCreated}
+                </h:column>
                 <h:column>
                     <f:facet name="header">Car</f:facet>
                     #{order.car.model}
                 </h:column>
                 <h:column>
                     <f:facet name="header">Unit Price</f:facet>
-                    #{order.car.price}
+                     <h:outputText value="#{order.car.price}">
+                        <f:convertNumber type="currency" currencySymbol="$" maxFractionDigits="2" />
+                    </h:outputText>                    
                 </h:column>
                 <h:column>
                     <f:facet name="header">Qty</f:facet>
@@ -44,7 +46,10 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Total Price</f:facet>
-                    #{order.car.price * order.quantity}
+                    <h:outputText value="#{order.car.price * order.quantity}">
+                        <f:convertNumber type="currency" currencySymbol="$" maxFractionDigits="2" />
+                    </h:outputText>  
+                    
                 </h:column>
             </h:dataTable>
 
