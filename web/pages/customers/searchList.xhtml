@@ -27,7 +27,7 @@
                 <h:column>
                     <f:facet name="header">Actions</f:facet> 
                     <h:form>
-                        <h:commandLink action="#{customerController.doViewDetails(c.id)}" value="view details" />
+                        <h:commandLink action="#{customerController.displayCustomerByID(c.id)}" value="View Details" />
                     </h:form>
                 </h:column>
             </h:dataTable>

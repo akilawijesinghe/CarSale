@@ -9,13 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import EJB.CustomerEJB;
+import Models.BrandNewVehicle;
 import Models.Customer;
 import static com.sun.xml.ws.spi.db.BindingContextFactory.LOGGER;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
+import java.io.IOException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +29,7 @@ import lombok.Setter;
  * @author : kasun eranda - 12216898
  */
 @Named(value = "customerController")
-@RequestScoped
+@SessionScoped
 @Getter
 @Setter
 
@@ -35,6 +39,7 @@ public class CustomerController implements Serializable {
     private CustomerEJB customerEJB;
 
     private Customer customer = new Customer();
+    private Customer customerNew = new Customer();
     private List<Customer> customerList = new ArrayList<Customer>();
     private List<Customer> customerSearchList = new ArrayList<Customer>();
 
@@ -75,6 +80,7 @@ public class CustomerController implements Serializable {
         try {
             customer = customerEJB.createCustomer(customer);
             ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "A new customer has been created", null));
+            this.customer = new Customer();
         } catch (Exception e) {
             ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Customer hasn't been created", e.getMessage()));
         }
@@ -85,7 +91,6 @@ public class CustomerController implements Serializable {
      * Get all the customers
      */
     public List<Customer> getCustomerList() {
-
         customerList = customerEJB.findCustomers();
         return customerList;
     }
@@ -97,6 +102,7 @@ public class CustomerController implements Serializable {
      */
     public String getCustomerByName() {
         customerSearchList = customerEJB.searchCustomer(searchKey);
+        this.searchKey = new String();
         return "searchList.xhtml";
     }
 
@@ -108,6 +114,11 @@ public class CustomerController implements Serializable {
     public List<Customer> getCustomerSearchList() {
         return customerSearchList;
     }
+    
+    public String displayCustomerByID(int id) {
+        this.customerNew = customerEJB.findACustomer(id);
+        return "detail.xhtml";
+    }
 
     /**
      * Display a customer details
@@ -116,14 +127,10 @@ public class CustomerController implements Serializable {
      * @return String View
      */
     public String doViewDetails(int id) {
-        this.customer = customerEJB.findACustomer(id);
+        System.out.println("Here banana");
+        System.out.println(id);
+        this.customerNew = customerEJB.findACustomer(id);
         return "detail.xhtml";
-    }
-
-    public void loadCustomerDetails() {
-        if (customerId != 0) {
-            customer = customerEJB.findACustomer(customerId);
-        }
     }
 
 }

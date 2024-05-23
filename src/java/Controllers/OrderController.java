@@ -14,7 +14,7 @@ import Models.Customer;
 import Models.Car;
 import Models.UsedVehicle;
 import jakarta.ejb.EJB;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
@@ -23,7 +23,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named(value = "orderController")
-@RequestScoped
+@SessionScoped
 @Getter
 @Setter
 public class OrderController implements Serializable {
