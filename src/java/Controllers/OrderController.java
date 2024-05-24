@@ -78,6 +78,21 @@ public class OrderController implements Serializable {
         FacesContext ctx = FacesContext.getCurrentInstance();
         Customer orderCustomer = this.getCustomerById(this.selectedCustomerId);
         Car orderCar = this.getCarById(this.selectedCarId);
+
+        if (orderCar instanceof UsedVehicle) {
+            UsedVehicle usedV = (UsedVehicle) orderCar;
+            if (usedV.getCarCount() < this.order.getQuantity()) {
+                ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "The quantity of the car is not enough", null));
+                return "add.xhtml";
+            }
+        } else {
+            BrandNewVehicle brandNew = (BrandNewVehicle) orderCar;
+            if (brandNew.getCarCount() < this.order.getQuantity()) {
+                ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "The quantity of the car is not enough", null));
+                return "add.xhtml";
+            }
+        }
+
         if (orderCustomer == null || orderCar == null) {
             ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Order hasn't been created", null));
         } else {
@@ -93,11 +108,11 @@ public class OrderController implements Serializable {
 
         if (orderCar instanceof UsedVehicle) {
             UsedVehicle usedV = (UsedVehicle) orderCar;
-            usedvehicleEJB.reduceAmount(usedV, deduuct);
+            usedvehicleEJB.reduceCount(usedV, deduuct);
             this.usedCarList = usedvehicleEJB.findUsed();
         } else {
             BrandNewVehicle brandNew = (BrandNewVehicle) orderCar;
-            brandnewvehicleEJB.reduceAmount(brandNew, deduuct);
+            brandnewvehicleEJB.reduceCount(brandNew, deduuct);
             this.brandNewCarList = brandnewvehicleEJB.findBrandNew();
         }
 
@@ -125,12 +140,11 @@ public class OrderController implements Serializable {
         orderList = orderEJB.findOrders();
         return orderList;
     }
-  
 
     public List<Order> getOrderSearchList() {
         return orderSearchList;
     }
-    
+
     public String displayCar(Car car) {
         if (car instanceof BrandNewVehicle) {
             brandNewCarListByRef = brandnewvehicleEJB.findBrandNewByRef(car.getReferenceNumber());
@@ -162,11 +176,11 @@ public class OrderController implements Serializable {
 
         if (deleteCar instanceof UsedVehicle) {
             UsedVehicle dedcustomer = (UsedVehicle) deleteCar;
-            usedvehicleEJB.reduceAmount(dedcustomer, -add);
+            usedvehicleEJB.reduceCount(dedcustomer, -add);
             this.usedCarList = usedvehicleEJB.findUsed();
         } else {
             BrandNewVehicle dedbrandNewCar = (BrandNewVehicle) deleteCar;
-            brandnewvehicleEJB.reduceAmount(dedbrandNewCar, -add);
+            brandnewvehicleEJB.reduceCount(dedbrandNewCar, -add);
             this.brandNewCarList = brandnewvehicleEJB.findBrandNew();
         }
 
@@ -175,5 +189,4 @@ public class OrderController implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
         return "index?faces-redirect=true"; // Adds a redirect parameter to the URL
     }
-
 }
