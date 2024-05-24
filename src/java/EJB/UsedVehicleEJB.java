@@ -7,10 +7,12 @@ import Models.UsedVehicle;
 
 /**
  * EJB for managing usedvehicle.
+ *
  * @author : akila wijesinghe - 12194813
  */
 @Stateless
 public class UsedVehicleEJB {
+
     @PersistenceContext(unitName = "CarSalesPU")
     private EntityManager em;
 
@@ -18,9 +20,10 @@ public class UsedVehicleEJB {
         em.persist(used);
         return used;
     }
-    
-     /**
+
+    /**
      * Finds all customers.
+     *
      * @return A list of customers.
      */
     public List<UsedVehicle> findUsed() {
@@ -33,12 +36,18 @@ public class UsedVehicleEJB {
         query.setParameter("referenceNumber", referenceNumber);
         return query.getResultList();
     }
+
+    public void reduceCarCount(UsedVehicle usedVehicle, int reductionAmount) {
+        int currentCount = usedVehicle.getCarCount();
+        int newCount = currentCount - reductionAmount;
+        usedVehicle.setCarCount(newCount);
+        em.merge(usedVehicle);
+    }
     
-     public void reduceAmount(UsedVehicle bn, int rn) {
-	int i;
-	i=bn.getCarCount().intValue();
-	i=i-rn;
-	bn.setCarCount(Integer.valueOf(i));
-	em.merge(bn);
+    public void addCarCount(UsedVehicle usedVehicle, int reductionAmount) {
+        int currentCount = usedVehicle.getCarCount();
+        int newCount = currentCount + reductionAmount;
+        usedVehicle.setCarCount(newCount);
+        em.merge(usedVehicle);
     }
 }

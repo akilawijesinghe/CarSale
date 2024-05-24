@@ -7,10 +7,12 @@ import java.util.List;
 
 /**
  * EJB for managing brandnewvehicle.
+ *
  * @author : akila wijesinghe - 12194813
  */
 @Stateless
 public class BrandNewVehicleEJB {
+
     @PersistenceContext(unitName = "CarSalesPU")
     private EntityManager em;
 
@@ -18,9 +20,10 @@ public class BrandNewVehicleEJB {
         em.persist(brandnew);
         return brandnew;
     }
-    
-     /**
+
+    /**
      * Finds all brand new cars.
+     *
      * @return A list of brand new cars.
      */
     public List<BrandNewVehicle> findBrandNew() {
@@ -33,12 +36,18 @@ public class BrandNewVehicleEJB {
         query.setParameter("referenceNumber", referenceNumber);
         return query.getResultList();
     }
+
+    public void reduceCarCount(BrandNewVehicle brandNewVehicle, int reductionAmount) {
+        int currentCount = brandNewVehicle.getCarCount();
+        int newCount = currentCount - reductionAmount;
+        brandNewVehicle.setCarCount(newCount);
+        em.merge(brandNewVehicle);
+    }
     
-     public void reduceAmount(BrandNewVehicle bn, int rn) {
-	int i;
-	i=bn.getCarCount().intValue();
-	i=i-rn;
-	bn.setCarCount(Integer.valueOf(i));
-	em.merge(bn);
+    public void addCarCount(BrandNewVehicle brandNewVehicle, int reductionAmount) {
+        int currentCount = brandNewVehicle.getCarCount();
+        int newCount = currentCount + reductionAmount;
+        brandNewVehicle.setCarCount(newCount);
+        em.merge(brandNewVehicle);
     }
 }

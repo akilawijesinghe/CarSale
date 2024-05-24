@@ -29,11 +29,11 @@ public class Order implements Serializable {
 
     @ManyToOne(cascade = {
         CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "CUSTOMERID", referencedColumnName = "ID")
+    @JoinColumn(name = "cusid", referencedColumnName = "id")
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "CARID", referencedColumnName = "ID")
+    @JoinColumn(name = "cid", referencedColumnName = "id")
     private Car car;
 
     public Long getId() {

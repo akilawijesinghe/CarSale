@@ -108,11 +108,11 @@ public class OrderController implements Serializable {
 
         if (orderCar instanceof UsedVehicle) {
             UsedVehicle usedV = (UsedVehicle) orderCar;
-            usedvehicleEJB.reduceCount(usedV, deduuct);
+            usedvehicleEJB.reduceCarCount(usedV, deduuct);
             this.usedCarList = usedvehicleEJB.findUsed();
         } else {
             BrandNewVehicle brandNew = (BrandNewVehicle) orderCar;
-            brandnewvehicleEJB.reduceCount(brandNew, deduuct);
+            brandnewvehicleEJB.reduceCarCount(brandNew, deduuct);
             this.brandNewCarList = brandnewvehicleEJB.findBrandNew();
         }
 
@@ -176,11 +176,11 @@ public class OrderController implements Serializable {
 
         if (deleteCar instanceof UsedVehicle) {
             UsedVehicle dedcustomer = (UsedVehicle) deleteCar;
-            usedvehicleEJB.reduceCount(dedcustomer, -add);
+            usedvehicleEJB.addCarCount(dedcustomer, add);
             this.usedCarList = usedvehicleEJB.findUsed();
         } else {
             BrandNewVehicle dedbrandNewCar = (BrandNewVehicle) deleteCar;
-            brandnewvehicleEJB.reduceCount(dedbrandNewCar, -add);
+            brandnewvehicleEJB.addCarCount(dedbrandNewCar, add);
             this.brandNewCarList = brandnewvehicleEJB.findBrandNew();
         }
 
